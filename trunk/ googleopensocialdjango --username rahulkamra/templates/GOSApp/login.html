@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Google</title>
+
+
+
+ <!-- Css Includes -->
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/style/GoogleClasses.css{% endblock %}" />
+<!-- Css Includes -->
+
+<!--  Javascript includes -->
+<script type="text/javascript" src="{% block javascript_1 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery-1.2.6.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript %}{% load adminmedia %}{% admin_media_prefix %}js/JS/htmltooltip.js{% endblock %}"></script>
+
+
+<!--  Javascript includes -->
+
+<!-- Style Ajax Tool Tip-->
+<style type="text/css">
+
+div.htmltooltip{
+position: absolute; /*leave this and next 3 values alone*/
+z-index: 1000;
+left: -1000px;
+top: -1000px;
+background: #99ff33;
+border: 3px solid black;
+color: black;
+padding: 3px;
+width: 250px; /*width of tooltip*/
+}
+
+</style>
+
+<!-- Style tool tip end here -->
+
+
+
+<script type="text/javascript">
+
+function myform_Validator(theForm)
+{
+	// check to see if the field is blank
+	if (theForm.user_name.value == "")
+	{
+		alert("Please enter your user name.");
+		theForm.user_name.focus();
+		return (false);
+	}
+
+	if (theForm.password.value == "")
+	{
+		alert("Please enter your password.");
+		theForm.password.focus();
+		return (false);
+	}
+
+else return true;
+		
+}
+</script>
+
+
+</head><body class="HPcanvas">
+        <form action="/checklogin/" method="post" onsubmit="return myform_Validator(this)">
+	<div id="hpDiv1">
+	  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td colspan="2" class="hpHeading">Welcome to GOS opensocial Application</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="hpTxt"><strong>OpenSocial, an open platform for social application development</strong></td>
+        </tr>
+        <tr>
+          <td class="">&nbsp;</td>
+          <td class="pdRt7" align="right"><span class="clsNormalTxt"><a href="/registration/"><strong>New User ?</strong></a></span> 
+          </td>
+        </tr>
+        <tr>
+          <td class="" width="30%">&nbsp;</td>
+          <td class="" width="70%"><table class="bdrAll" width="100%" border="0" cellpadding="4" cellspacing="0">
+            <tbody><tr>
+              <td><table class="lgBgColor" width="100%" border="0" cellpadding="2" cellspacing="0">
+                <tbody><tr>
+                  <td class="lgHeading" width="27%">Login</td>
+                  <td width="73%"><font size="2" color="red"></font></td>
+                </tr>
+                <tr class="ht4">
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                
+                {% if invalid %}
+                <tr><span style="color: red;">Invalid Username / Password</span></tr>
+                {% endif %}
+                
+                <tr>
+				<div class="htmltooltip">Username/Password Help Here</div>
+
+                  <td class="clsNormalTxt" align="right">User Name </td>
+                  <td class="clsNormalTxt"><input name="user_name" size="30" type="text" tabindex="1"></td><td><a rel="htmltooltip" href="#" tabindex="10">Tip</a></td>
+				  
+                </tr>
+                <tr>
+                  <td class="clsNormalTxt" align="right">Password</td>
+                  <td class="clsNormalTxt"><input name="password" size="30" type="password" tabindex="2"></td>
+                </tr>
+                <tr>
+                  <td class="clsNormalTxt">&nbsp;</td>
+                  <td class="clsNormalTxt"><input name="checkbox" value="checkbox" type="checkbox">
+                  Remember me on this computer ? </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td class="" align="right">
+                  <input name="Submit" value="Log In" class="btnTxt btnWidth100" type="submit">
+</td>
+                </tr>
+                <tr class="ht4">
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody></table></td>
+            </tr>
+          </tbody></table></td>
+        </tr>
+        <tr>
+          <td class="">&nbsp;</td>
+          <td class="">&nbsp;</td>
+        </tr>
+      </tbody></table>
+	</div>
+</form>
+</body></html>

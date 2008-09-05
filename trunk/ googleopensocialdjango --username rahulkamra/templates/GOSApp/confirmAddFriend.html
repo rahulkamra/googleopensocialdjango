@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Google</title>
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/style/GoogleClasses.css{% endblock %}" />
+</head><body class="ContentCanvas">
+<div id="ContentDiv1">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+		
+      <td valign="top" width="116"><img
+				src="{% block stylesheet_myImage %}{% load adminmedia %}{% admin_media_prefix %}{{ profile_info.MY_IMAGE}}{% endblock %}"
+				class="imgBdr" vspace="0" width="114" height="114" hspace="0"></td>
+      <td colspan="2" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="pgHeading" width="100%"><span class="flLft">{{ profile_info.NAME }} add friend confirmation</span><span class="flRgt"><a href="/successlogin/">Home  |   </a><a href="/logout/">Logout</a></span></td>
+        </tr>
+        <tr>
+          <td class="pgSubHeading1">
+		  
+				
+			<div id="message"><p>
+		</p></div>
+		<div id="profileDetails" style="">
+		<table><tbody><tr><td class="">DOB ={{ profile_info.DATEOFBIRTH }} ,
+									{{profile_info.GENDER}}</td></tr>
+		 <tr><td>
+		</td></tr></tbody></table>
+		  </div></td>
+        </tr>
+        <tr>
+          </tr><tr><td> <font size="2"><b>About Me :</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ profile_info.ABOUTME }}</td></tr>
+        
+      </tbody></table></td>
+    </tr>
+  </tbody></table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" height="400">
+    <tbody><tr>
+      <td class="" valign="top" width="120" height="100">
+<table class="bdrLftLink" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td valign="top"><table width="250" border="0" cellpadding="0" cellspacing="1">
+            <tbody><tr>
+									<td class="lftLinks"><img
+										src="{% block stylesheet_2 %}{% load adminmedia %}{% admin_media_prefix %}css/images/ico-Profile.gif{% endblock %}"
+										width="16" align="absmiddle" border="0" height="16"><a
+										href="/profile/{{ user_info.USER_ID }}">My Profile </a><a></a></td>
+
+
+								</tr>
+								<tr>
+								</tr>
+			 
+          </tbody></table></td>
+        </tr>
+      </tbody></table></td>
+      <td class="clsProfileTxt" valign="top" width="59%" height="100">
+	  
+	<table>
+	<tbody><tr align="center"></tr>
+	<tr><td>Are u sure u wana add {{ profile_info.NAME }} to ur friend list</td></tr>
+	<tr></tr><tr></tr><tr></tr>
+	<tr><td><form method='post' action='/addfriend/' id="formID" name="myForm">
+	<input type ="hidden" value ="{{ profile_info.USER_ID.USER_ID }}" name ="owner_id"/>
+	<input type="submit" value ="YES" />
+	</form></td><td><input type="button" value ="NO" onclick="__goToProfile()"/></td></tr>
+	</tbody></table>
+	<script type="text/javascript">	
+	function __goToProfile(){
+	window.location='/successlogin/'
+	}
+	</script>		 
+	  
+
+	</td>
+      <td rowspan="2" valign="top" width="30%" height="400"><table class="bdrLftLink" width="100%" bgcolor="#deeef3" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+        
+		  
+		  	
+		  
+		  <table width="100%" border="0" cellpadding="0" cellspacing="4">
+		            </table></td>
+        </tr>
+        <tr>
+          <td height="5">&nbsp;</td>
+        </tr>
+      </tbody></table></td>
+    
+    </tr><tr>
+      <td colspan="2" class="" valign="top" height="320"><table class="bdrLftLink" border="0" cellpadding="5" cellspacing="0">
+          
+		
+    
+			
+		</table>
+	        </td></tr></tbody></table>
+      
+  
+
+</div></body></html>
