@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Google</title>
+<link rel="stylesheet" type="text/css"
+	href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/style/GoogleClasses.css{% endblock %}" />
+<link rel="stylesheet" type="text/css"
+	href="{% block stylesheet_ %}{% load adminmedia %}{% admin_media_prefix %}css/style/gadgets.css{% endblock %}" />
+
+
+<!-- For Zoom -->
+<script type="text/javascript" src="{% block javascript_1 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery-1.2.6.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_2 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery.dimensions.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_3 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery.shadow.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_4 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery.ifixpng.js{% endblock %}"></script>
+<script>
+/**
+* jQuery fancyzoom plugin.
+* This is an adaptation of the fancyzoom effect as a jQuery plugin
+*
+* Author: Mathieu Vilaplana <mvilaplana@df-e.com>
+* Date: March 2008
+* rev 1.0
+* rev: 1.1
+* Add title if alt in the img
+*/
+(function($){var s='ressources/';var t=$('<div>');var u=$('<img>').css({position:'absolute',top:0,left:0,cursor:'pointer',zIndex:102});$.fn.fancyzoom=function(q){var r=$('<div>').css({height:'100%',width:'100%',position:'fixed',left:0,top:0,cursor:"wait"});function openZoomBox(a,o){if(o.showoverlay){r.appendTo('body').click(function(){closeZoomBox(o)})}pos=a.offset();o=$.extend(o,{dimOri:{width:a.outerWidth(),height:a.outerHeight(),left:pos.left,top:pos.top,'opacity':0}});var b=$('img',t);t.css({'opacity':0,'text-align':'center','border':'0px solid red'}).appendTo('body');var c=t.outerWidth();var d=t.outerHeight();dimBoxTarget=$.extend({},{width:c,height:d,'opacity':1},__posCenter((c+15),(d+30)));u.css({left:(dimBoxTarget.left+dimBoxTarget.width-22-(dimBoxTarget.width-b.width())/2),top:dimBoxTarget.top});var e=function(){if($.fn.shadow&&!$.browser.msie){$('img:first',t).shadow(o.shadowOpts)}if(o.Speed>0&&!$.browser.msie){u.fadeIn('slow');$('div',t).fadeIn('slow')}else{u.show();$('div',t).show()}};$('div',t).hide();if(o.Speed>0){t.css(o.dimOri).animate(dimBoxTarget,o.Speed,e)}else{t.css(dimBoxTarget);e()}}function closeZoomBox(o){u.remove();if(o.Speed>0){t.animate(o.dimOri,o.Speed,function(){$(this).empty().remove()});if(o.showoverlay){r.animate({'opacity':0},o.Speed,function(){$(this).empty().remove()})}}else{t.empty().remove();if(o.showoverlay){r.empty().remove()}}}return this.each(function(){var l=$(this);var m=l.is('img')?l:$('img:first',l);var n=null;if(l.attr('href')){n=l.attr('href')}if(l.is('img')){n=l.attr('src');l.css('cursor','pointer')}var p=$.extend({},$.fn.fancyzoom.defaultsOptions,q||{},{dimOri:{},oImgZoomBoxProp:{position:'absolute',left:0,top:0}});r.css({opacity:p.overlay,background:p.overlayColor});if(!/\.jpg|\.png|\.gif/i.test(n)||($('img',l).size()===0&&!l.is('img'))){return}l.click(function(){if(v&&v.is(':visible')||x){if(t&&$('img:first',t).attr('src')!=n){__cancelLoading()}else{return false}}var o=$.extend({},p,q);if(t&&t.parent().size()>0){var b=$('img:first',t);if(n==b.attr('src')){pos=m.offset();o=$.extend(o,{dimOri:{width:m.outerWidth(),height:m.outerHeight(),left:pos.left,top:pos.top,'opacity':0}});closeZoomBox(o);return false}else{u.remove();t.empty().remove()}}if(o.showoverlay&&r){r.empty().remove().css({'opacity':o.overlay})}u.attr('src','{% block javascipt_omg %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/' + 'closebox.png'{% endblock %}).appendTo('body').hide();if($.fn.ifixpng){$.ifixpng(o.imgDir+'blank.gif');u.ifixpng(o.imgDir+'blank.gif')}u.unbind('click').click(function(){closeZoomBox(o)});t=$('<div>').empty().css(o.oImgZoomBoxProp);var c=m.attr('alt');if(c){var d=$('<div><center><table height=0 border="0" cellspacing=0 cellpadding=0><tr><td></td><td class="fancyTitle">'+c+'</td><td></td></table></center></div>').css({marginTop:10,marginRight:15});var e=d.find('td:first').css({'background':'url('+'{% block javascipt_omg1 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/'+'zoom-caption-l.png)'{% endblock %},width:'13px',height:'26px'});var f=d.find('td:last').css({'background':'url('+'{% block javascipt_omg2 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/'+'zoom-caption-r.png)'{% endblock %},width:'13px',height:'26px'});var g=$('.fancyTitle',d).css({'background':'url('+'{% block javascipt_omg3 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/'+'zoom-caption-fill.png)'{% endblock %},'padding':'0px 20px',color:'#FFF','font-size':'14px'});if($.fn.ifixpng){e.ifixpng(o.imgDir+'blank.gif');f.ifixpng(o.imgDir+'blank.gif');g.ifixpng(o.imgDir+'blank.gif')}d.appendTo(t)}var h=$('<img />').attr('src',n).css({zIndex:100,marginTop:15,marginRight:15}).click(function(){closeZoomBox(o)}).prependTo(t);var i=new Image();i.src=n;var j=function(){if(w){w=false}else{if(__getFileName(i.src)==__getFileName($('img:first',t).attr('src'))){k();openZoomBox(m,o);__stoploading()}}};var k=function(){var a=$('<div></div>').css({position:'absolute','top':0,'left':0,opacity:0,'border':'0px solid red'});h.appendTo(a);a.appendTo('body');imWidth=h.width();imHeight=h.height();maxWidth=$(window).width()*0.9;maxHeight=$(window).height()*0.8;if(maxHeight<imHeight){h.css('height',maxHeight)}else if(maxWidth<imWidth){h.css('width',maxWidth)}a.remove();h.prependTo(t)};if(i.complete){k();openZoomBox(m,o)}else{__displayLoading();i.onload=function(){j()}}return false})})};$.fn.fancyzoom.defaultsOptions={overlayColor:'#000',overlay:0.6,showoverlay:false,Speed:400,shadowOpts:{color:"#000",offset:4,opacity:0.2},imgDir:s};function __posCenter(a,b){var c=($(window).width()-a)/2+$(window).scrollLeft();var d=($(window).height()-b)/2+$(window).scrollTop();c=(c<0)?0:c;d=(d<0)?0:d;return{left:c,top:d}}var v=null;var w=false;var x=null;function __displayLoading(){if(!v){v=$('<div></div>').css({width:50,height:50,position:'absolute','background':'transparent',opacity:8/10,color:'#FFF',padding:'5px','font-size':'10px'})}v.css(__posCenter(50,50)).html('<img src="'+$.fn.fancyzoom.defaultsOptions.imgDir+'blank.gif" />').click(function(){__cancelLoading()}).appendTo('body').show();x=setTimeout(__changeimageLoading,400)}function __cancelLoading(){w=true;__stoploading()}function __stoploading(){v.hide().remove();if(x){clearTimeout(x);x=null}}function __changeimageLoading(){if(!v.is(':visible')){x=null;return}var a=$('img',v);if(!a.attr('src')||/blank\.gif/.test(a.attr('src'))){strImgSrc=$.fn.fancyzoom.defaultsOptions.imgDir+"zoom-spin-1.png"}else{tab=a.attr('src').split(/[- .]+/);iImg=parseInt(tab[2]);iImg=(iImg<12)?(iImg+1):1;strImgSrc=tab[0]+"-"+tab[1]+"-"+iImg+"."+tab[3]}var b=new Image();b.src=strImgSrc;var c=function(){v.css(__posCenter(50,50));a.attr('src',strImgSrc);x=setTimeout(__changeimageLoading,100)};if(b.complete){c()}else{b.onload=c}}function __getFileName(a){if(!a){return false}var b=a.split('/');return((b.length<1)?a:b[(b.length-1)])}})(jQuery);
+</script>
+
+
+
+<!-- End of zoom things -->
+
+<!--  Gadgets
+<script type="text/javascript" src="js/rpc.js"></script>
+<script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/gadgets.js"></script>
+<script type="text/javascript" src="js/DemoAppGadget.js"></script>
+<script type="text/javascript" src="js/cookiebaseduserprefstore.js"></script><script type="text/javascript">
+var gServerBaseURL = '';
+var gProfileGadget = null;
+var gCanvasGadget = null;
+var gChromeIds = [ "gadget-profile-chrome", "gadget-canvas-chrome" ];
+var gOwnerId = 125;
+var gViewerId =  125;
+
+function generateSecureToken( gadget, mode ) {
+  // TODO: Use a less silly mechanism of mapping a gadget URL to an appid
+  var appId = 0;
+  var appIdGeneratorUrl = gadget.specUrl + "?mode=" + mode;
+  for (var i = 0; i < appIdGeneratorUrl.length; i++) {
+    appId += appIdGeneratorUrl.charCodeAt(i);
+  }
+  
+  var fields = [gOwnerId, gViewerId, appId, "shindig", gadget.specUrl, "0"];
+  for (var i = 0; i < fields.length; i++) {
+    // escape each field individually, for metachars in URL
+    fields[i] = escape(fields[i]);
+  }
+  return fields.join(":");
+}
+</script>
+
+<script type="text/javascript">
+  
+function handleNewProfileGadget( gadgetUrl ) {
+  gProfileGadget = gadgets.container.createGadget( {'specUrl': gadgetUrl} );
+  gProfileGadget.setServerBase('http://ecm.satyam.com/shindig/php/gadgets/');
+  gProfileGadget.width=170;
+  gadgets.container.addGadget( gProfileGadget );
+  gadgets.container.layoutManager.setGadgetChromeIds( gChromeIds );
+}
+
+function handleNewCanvasGadget( gadgetUrl ) {
+  gCanvasGadget = gadgets.container.createGadget( {'specUrl': gadgetUrl} );
+  gCanvasGadget.setServerBase('http://ecm.satyam.com/shindig/php/gadgets/');
+  gCanvasGadget.width=430;
+  gCanvasGadget.height=400;
+  gadgets.container.addGadget( gCanvasGadget );
+  gadgets.container.layoutManager.setGadgetChromeIds( gChromeIds );
+}
+
+function View(){
+handleGadgetInMode('canvas');
+}
+
+function confirmDelete()
+{
+    return confirm("Are you sure you wish to delete this gadget?");
+}
+
+function handleGadgetInMode( mode ) {
+  var currGadget = null;
+  
+  if (document.forms[ "profileViewGadgetForm" ].elements[ "selectGadget" ].selectedIndex == -1) {
+   //nothing has been selected yet!
+   return ; 
+  }
+   var gadgetUrl = gServerBaseURL + document.forms[ "profileViewGadgetForm" ].elements[ "selectGadget" ].value;
+   gadgets.DemoAppGadget.prototype.gadget_url = gadgetUrl; //document.forms[ "profileViewGadgetForm" ].elements[ "selectGadget" ].value;
+   gadgets.DemoAppGadget.prototype.user="viewer";
+   
+   if( mode == "profile" ) {
+	gadgets.DemoAppGadget.prototype.viewMode = 1;
+    if( gProfileGadget === null ) handleNewProfileGadget( gadgetUrl );
+    currGadget = gProfileGadget;
+  } else if( mode == "canvas" ) {
+	gadgets.DemoAppGadget.prototype.viewMode = 0;
+    if( gCanvasGadget === null ) handleNewCanvasGadget( gadgetUrl );
+    currGadget = gCanvasGadget;
+    
+    var profileDetailsDiv=document.getElementById("profileDetails");
+    profileDetailsDiv.style.display = "none";
+  }
+   
+  currGadget.specUrl = gadgetUrl;
+  currGadget.secureToken = escape(generateSecureToken( currGadget, mode ));
+  
+  gadgets.container.setView( mode );
+  gadgets.container.renderGadget( currGadget );
+ }
+
+function initProfileGadget( ) {
+  handleGadgetInMode("profile");
+  
+}
+
+gadgets.util.registerOnLoadHandler(initProfileGadget);
+
+
+</script>
+
+
+-->
+<script type="text/javascript">
+$(function(){
+				$('#demo > a:first').fancyzoom({Speed:400,showoverlay:false});
+				
+				$('img.fancyzoom').fancyzoom();
+			});
+		</script>
+		
+	   	<style type="text/css">
+	   		A IMG {border:0;}
+	   		A{text-decoration:none;color:#000;}
+	   		body{background:#CCC;}
+	   		#pageWrapper{
+	   			margin:0 auto;
+	   			width:1000px;
+	   			border:1px solid #000;
+	   			background:#FFF;
+	   			padding: 0px 20px 40px 20px;	
+	   		}
+	   		h1{text-align:right;font-size:24px;}
+	   		h2{font-size:16px;border-bottom:1px solid #CCC;margin-top:40px;}
+	   		h3{font-size:14px;border-bottom:1px solid #CCC;margin-left:40px;}
+	   		#demo A {
+	   			display:block;
+	   			float:left;
+	   			width:400px;
+	   			text-align:left;
+	   			text-decoration:none;
+	   			color:#000;
+	   			font-size:11px;
+	   		}
+	   		#demo{
+	   			padding-left:200px;
+	   		}
+	   		#demo  ul {text-align:left;color:#000;}
+	   		p.code{
+	   			margin-left:60px;
+	   		}
+	   		pre{
+	   			margin-left:60px;
+	   			background:#CCC;
+	   			padding:6px;
+	   		}
+	   	</style>
+</head><body class="ContentCanvas">
+<div id="ContentDiv1">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+		
+      
+      <td colspan="2" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="pgHeading" width="100%"><span class="flLft">Available Gadgets</span><span class="flRgt"><a href="/successlogin/">Home  |   </a><a href="/logout/">Logout</a></span></td>
+        </tr>
+        <tr>
+          <td class="pgSubHeading1">
+		  
+				
+			<div id="message"><p>
+		</p></div>
+		<div id="profileDetails" style="">
+		<table><tbody><tr><td class=""></td></tr>
+		 <tr><td>
+		</td></tr></tbody></table>
+		  </div></td>
+        </tr>
+        <tr>
+          </tr><tr></tr>
+        
+      </tbody></table></td>
+    </tr>
+  </tbody></table>
+	<br><br><br>
+<table>
+
+<tbody>
+
+</div>
+<div id="demo">
+
+		
+		
+		
+		{% for gadget in gadgetComboList %}
+		<tr> 
+		<td><img src="{% block image_friend %}{% load adminmedia %}{% admin_media_prefix %}{{ gadget.0.IMAGE_URL }} {% endblock %}" alt="" width="64" height="64"  class="fancyzoom" ></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td >{{ gadget.0.DESCRIPTION }}</td> <td></td>
+		</tr></td>
+	    
+		</tr>
+		<tr><td>{{ gadget.0.NAME }}</td></tr>
+		<tr><td><br></td></tr>
+	<tr><td>
+	
+	
+	
+	{% if gadget.1 %}
+	<input type="button" value="Delete" id="{{ gadget.0.ID }}" onclick="__deleteGadget(this)"/>
+	<script>
+	function __deleteGadget(id){
+		window.location.href='/deletegadget/'+ id.id;
+		
+	}
+	
+	</script>
+
+	{% endif %}
+
+	
+	
+	{% if not gadget.1%}
+	<input type="button" value="Add" onclick="__addGadget(this)" id="{{ gadget.0.ID}}"/>
+	<script>
+	function __addGadget(id){
+		window.location.href='/addgadget/'+ id.id;
+	}
+	</script>
+	{% endif %}
+	
+	
+	
+
+	
+
+	
+	
+	
+	</td></tr>
+	<tr><td><hr></td><td><hr></td><td><hr></td>
+	{% endfor %}
+	
+		
+		
+	</div></tbody></table>
+
+	</td>
+      <td rowspan="2" valign="top" width="30%" height="400"><table class="bdrLftLink" width="100%" bgcolor="#deeef3" border="0" cellpadding="0" cellspacing="0">
+        </table></td>
+    
+    </tr><tr>
+      
+          
+		
+    
+			
+		</table>
+	        </td></tr></tbody></table>
+      
+  
+
+</div></body></html>

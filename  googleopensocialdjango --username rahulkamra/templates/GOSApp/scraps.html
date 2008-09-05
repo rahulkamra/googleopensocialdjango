@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta http-equiv="Expires" content="text/html; charset=UTF-8">
+<title>Google</title>
+<link rel="stylesheet" type="text/css"
+	href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/style/GoogleClasses.css{% endblock %}" />
+<link rel="stylesheet" type="text/css"
+	href="{% block stylesheet_1 %}{% load adminmedia %}{% admin_media_prefix %}css/style/gadgets.css{% endblock %}" />
+	<link rel="stylesheet" type="text/css"
+	href="{% block stylesheet_20 %}{% load adminmedia %}{% admin_media_prefix %}css/style/rte.css{% endblock %}" />
+
+
+<!-- For Zoom -->
+<script type="text/javascript" src="{% block javascript_1 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery-1.2.6.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_2 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery.dimensions.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_3 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery.shadow.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_4 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery.ifixpng.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_6 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/dimmer.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript_7 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/dimensions.pack.js{% endblock %}"></script>
+<script>
+/**
+* jQuery fancyzoom plugin.
+* This is an adaptation of the fancyzoom effect as a jQuery plugin
+*
+* Author: Mathieu Vilaplana <mvilaplana@df-e.com>
+* Date: March 2008
+* rev 1.0
+* rev: 1.1
+* Add title if alt in the img
+*/
+(function($){var s='ressources/';var t=$('<div>');var u=$('<img>').css({position:'absolute',top:0,left:0,cursor:'pointer',zIndex:102});$.fn.fancyzoom=function(q){var r=$('<div>').css({height:'100%',width:'100%',position:'fixed',left:0,top:0,cursor:"wait"});function openZoomBox(a,o){if(o.showoverlay){r.appendTo('body').click(function(){closeZoomBox(o)})}pos=a.offset();o=$.extend(o,{dimOri:{width:a.outerWidth(),height:a.outerHeight(),left:pos.left,top:pos.top,'opacity':0}});var b=$('img',t);t.css({'opacity':0,'text-align':'center','border':'0px solid red'}).appendTo('body');var c=t.outerWidth();var d=t.outerHeight();dimBoxTarget=$.extend({},{width:c,height:d,'opacity':1},__posCenter((c+15),(d+30)));u.css({left:(dimBoxTarget.left+dimBoxTarget.width-22-(dimBoxTarget.width-b.width())/2),top:dimBoxTarget.top});var e=function(){if($.fn.shadow&&!$.browser.msie){$('img:first',t).shadow(o.shadowOpts)}if(o.Speed>0&&!$.browser.msie){u.fadeIn('slow');$('div',t).fadeIn('slow')}else{u.show();$('div',t).show()}};$('div',t).hide();if(o.Speed>0){t.css(o.dimOri).animate(dimBoxTarget,o.Speed,e)}else{t.css(dimBoxTarget);e()}}function closeZoomBox(o){u.remove();if(o.Speed>0){t.animate(o.dimOri,o.Speed,function(){$(this).empty().remove()});if(o.showoverlay){r.animate({'opacity':0},o.Speed,function(){$(this).empty().remove()})}}else{t.empty().remove();if(o.showoverlay){r.empty().remove()}}}return this.each(function(){var l=$(this);var m=l.is('img')?l:$('img:first',l);var n=null;if(l.attr('href')){n=l.attr('href')}if(l.is('img')){n=l.attr('src');l.css('cursor','pointer')}var p=$.extend({},$.fn.fancyzoom.defaultsOptions,q||{},{dimOri:{},oImgZoomBoxProp:{position:'absolute',left:0,top:0}});r.css({opacity:p.overlay,background:p.overlayColor});if(!/\.jpg|\.png|\.gif/i.test(n)||($('img',l).size()===0&&!l.is('img'))){return}l.click(function(){if(v&&v.is(':visible')||x){if(t&&$('img:first',t).attr('src')!=n){__cancelLoading()}else{return false}}var o=$.extend({},p,q);if(t&&t.parent().size()>0){var b=$('img:first',t);if(n==b.attr('src')){pos=m.offset();o=$.extend(o,{dimOri:{width:m.outerWidth(),height:m.outerHeight(),left:pos.left,top:pos.top,'opacity':0}});closeZoomBox(o);return false}else{u.remove();t.empty().remove()}}if(o.showoverlay&&r){r.empty().remove().css({'opacity':o.overlay})}u.attr('src','{% block javascipt_omg %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/' + 'closebox.png'{% endblock %}).appendTo('body').hide();if($.fn.ifixpng){$.ifixpng(o.imgDir+'blank.gif');u.ifixpng(o.imgDir+'blank.gif')}u.unbind('click').click(function(){closeZoomBox(o)});t=$('<div>').empty().css(o.oImgZoomBoxProp);var c=m.attr('alt');if(c){var d=$('<div><center><table height=0 border="0" cellspacing=0 cellpadding=0><tr><td></td><td class="fancyTitle">'+c+'</td><td></td></table></center></div>').css({marginTop:10,marginRight:15});var e=d.find('td:first').css({'background':'url('+'{% block javascipt_omg1 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/'+'zoom-caption-l.png)'{% endblock %},width:'13px',height:'26px'});var f=d.find('td:last').css({'background':'url('+'{% block javascipt_omg2 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/'+'zoom-caption-r.png)'{% endblock %},width:'13px',height:'26px'});var g=$('.fancyTitle',d).css({'background':'url('+'{% block javascipt_omg3 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/ressources/'+'zoom-caption-fill.png)'{% endblock %},'padding':'0px 20px',color:'#FFF','font-size':'14px'});if($.fn.ifixpng){e.ifixpng(o.imgDir+'blank.gif');f.ifixpng(o.imgDir+'blank.gif');g.ifixpng(o.imgDir+'blank.gif')}d.appendTo(t)}var h=$('<img />').attr('src',n).css({zIndex:100,marginTop:15,marginRight:15}).click(function(){closeZoomBox(o)}).prependTo(t);var i=new Image();i.src=n;var j=function(){if(w){w=false}else{if(__getFileName(i.src)==__getFileName($('img:first',t).attr('src'))){k();openZoomBox(m,o);__stoploading()}}};var k=function(){var a=$('<div></div>').css({position:'absolute','top':0,'left':0,opacity:0,'border':'0px solid red'});h.appendTo(a);a.appendTo('body');imWidth=h.width();imHeight=h.height();maxWidth=$(window).width()*0.9;maxHeight=$(window).height()*0.8;if(maxHeight<imHeight){h.css('height',maxHeight)}else if(maxWidth<imWidth){h.css('width',maxWidth)}a.remove();h.prependTo(t)};if(i.complete){k();openZoomBox(m,o)}else{__displayLoading();i.onload=function(){j()}}return false})})};$.fn.fancyzoom.defaultsOptions={overlayColor:'#000',overlay:0.6,showoverlay:false,Speed:400,shadowOpts:{color:"#000",offset:4,opacity:0.2},imgDir:s};function __posCenter(a,b){var c=($(window).width()-a)/2+$(window).scrollLeft();var d=($(window).height()-b)/2+$(window).scrollTop();c=(c<0)?0:c;d=(d<0)?0:d;return{left:c,top:d}}var v=null;var w=false;var x=null;function __displayLoading(){if(!v){v=$('<div></div>').css({width:50,height:50,position:'absolute','background':'transparent',opacity:8/10,color:'#FFF',padding:'5px','font-size':'10px'})}v.css(__posCenter(50,50)).html('<img src="'+$.fn.fancyzoom.defaultsOptions.imgDir+'blank.gif" />').click(function(){__cancelLoading()}).appendTo('body').show();x=setTimeout(__changeimageLoading,400)}function __cancelLoading(){w=true;__stoploading()}function __stoploading(){v.hide().remove();if(x){clearTimeout(x);x=null}}function __changeimageLoading(){if(!v.is(':visible')){x=null;return}var a=$('img',v);if(!a.attr('src')||/blank\.gif/.test(a.attr('src'))){strImgSrc=$.fn.fancyzoom.defaultsOptions.imgDir+"zoom-spin-1.png"}else{tab=a.attr('src').split(/[- .]+/);iImg=parseInt(tab[2]);iImg=(iImg<12)?(iImg+1):1;strImgSrc=tab[0]+"-"+tab[1]+"-"+iImg+"."+tab[3]}var b=new Image();b.src=strImgSrc;var c=function(){v.css(__posCenter(50,50));a.attr('src',strImgSrc);x=setTimeout(__changeimageLoading,100)};if(b.complete){c()}else{b.onload=c}}function __getFileName(a){if(!a){return false}var b=a.split('/');return((b.length<1)?a:b[(b.length-1)])}})(jQuery);
+</script>
+
+
+<!-- End of zoom things -->
+<!-- RTE   SCRIPT -->
+<script>
+/*
+ * jQuery RTE plugin 0.2 - create a rich text form for Mozilla, Opera, and Internet Explorer
+ *
+ * Copyright (c) 2007 Batiste Bieler
+ * Distributed under the GPL (GPL-LICENSE.txt) licenses.
+ */
+
+// define the rte light plugin
+jQuery.fn.rte = function(css_url) {
+
+    if(document.designMode || document.contentEditable)
+    {
+        $(this).each( function(){
+            var textarea = $(this);
+            enableDesignMode(textarea);
+        });
+    }
+    
+    function formatText(iframe, command, option) {
+        iframe.contentWindow.focus();
+        try{
+            iframe.contentWindow.document.execCommand(command, false, option);
+        }catch(e){console.log(e)}
+        iframe.contentWindow.focus();
+    }
+    
+    function tryEnableDesignMode(iframe, doc, callback) {
+        try {
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(doc);
+            iframe.contentWindow.document.close();
+        } catch(error) {
+            console.log(error)
+        }
+        if (document.contentEditable) {
+            iframe.contentWindow.document.designMode = "On";
+            callback();
+            return true;
+        }
+        else if (document.designMode != null) {
+            try {
+                iframe.contentWindow.document.designMode = "on";
+                callback();
+                return true;
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        setTimeout(function(){tryEnableDesignMode(iframe, doc, callback)}, 250);
+        return false;
+    }
+    
+    function enableDesignMode(textarea) {
+        // need to be created this way
+        var iframe = document.createElement("iframe");
+        iframe.frameBorder=0;
+        iframe.frameMargin=0;
+        iframe.framePadding=0;
+        if(textarea.attr('class'))
+            iframe.className = textarea.attr('class');
+        if(textarea.attr('id'))
+            iframe.id = textarea.attr('id');
+        if(textarea.attr('name'))
+            iframe.title = textarea.attr('name');
+        textarea.after(iframe);
+        var css = "";
+        if(css_url)
+            var css = "<link type='text/css' rel='stylesheet' href='"+css_url+"' />"
+        var content = textarea.val();
+        // Mozilla need this to display caret
+        if($.trim(content)=='')
+            content = '<br>';
+        var doc = "<html><head>"+css+"</head><body class='frameBody'>"+content+"</body></html>";
+        tryEnableDesignMode(iframe, doc, function() {
+            $(iframe).before(toolbar(iframe));
+            textarea.remove();
+        });
+    }
+    
+    function disableDesignMode(iframe, submit) {
+        var content = iframe.contentWindow.document.getElementsByTagName("body")[0].innerHTML;
+        if(submit==true)
+            var textarea = $('<input type="hidden" />');
+        else
+            var textarea = $('<textarea></textarea>');
+        textarea.val(content);
+        t = textarea.get(0);
+        if(iframe.className)
+            t.className = iframe.className;
+        if(iframe.id)
+            t.id = iframe.id;
+        if(iframe.title)
+            t.name = iframe.title;
+        $(iframe).before(textarea);
+        if(submit!=true)
+            $(iframe).remove();
+    }
+    
+    function toolbar(iframe) {
+        var tb = $("<div class='rte-toolbar'><div>\
+            <p>\
+                <select>\
+                    <option value=''>Bloc style</option>\
+                    <option value='p'>Paragraph</option>\
+                    <option value='h3'>Title</option>\
+                </select>\
+            </p>\
+            <p>\
+                <a href='#' class='bold'><img src='{% block javascript_22 %}{% load adminmedia %}{% admin_media_prefix %}css/rte_images/bold.gif {% endblock %}' alt='bold' /></a>\
+                <a href='#' class='italic'><img src='{% block javascript_23 %}{% load adminmedia %}{% admin_media_prefix %}css/rte_images/italic.gif{% endblock %}' alt='italic' /></a>\
+            </p>\
+            <p>\
+                <a href='#' class='unorderedlist'><img src='{% block javascript_18 %}{% load adminmedia %}{% admin_media_prefix %}css/rte_images/unordered.gif{% endblock %}' alt='unordered list' /></a>\
+                <a href='#' class='link'><img src='{% block javascript_19 %}{% load adminmedia %}{% admin_media_prefix %}css/rte_images/link.png{% endblock %}' alt='link' /></a>\
+                <a href='#' class='image'><img src='{% block javascript_20 %}{% load adminmedia %}{% admin_media_prefix %}css/rte_images/image.png{% endblock %}' alt='image' /></a>\
+                <a href='#' class='disable'><img src='{% block javascript_21 %}{% load adminmedia %}{% admin_media_prefix %}css/rte_images/close.gif{% endblock %}' alt='close rte' /></a>\
+            </p></div></div>");
+        $('select', tb).change(function(){
+            var index = this.selectedIndex;
+            if( index!=0 ) {
+                var selected = this.options[index].value;
+                formatText(iframe, "formatblock", '<'+selected+'>');
+            }
+        });
+        $('.bold', tb).click(function(){ formatText(iframe, 'bold');return false; });
+        $('.italic', tb).click(function(){ formatText(iframe, 'italic');return false; });
+        $('.unorderedlist', tb).click(function(){ formatText(iframe, 'insertunorderedlist');return false; });
+        $('.link', tb).click(function(){ 
+            var p=prompt("URL:");
+            if(p)
+                formatText(iframe, 'CreateLink', p);
+            return false; });
+        $('.image', tb).click(function(){ 
+            var p=prompt("image URL:");
+            if(p)
+                formatText(iframe, 'InsertImage', p);
+            return false; });
+        $('.disable', tb).click(function(){ disableDesignMode(iframe); tb.remove(); return false; });
+        $(iframe).parents('form').submit(function(){ 
+            disableDesignMode(iframe, true); });
+        var iframeDoc = $(iframe.contentWindow.document);
+        
+        var select = $('select', tb)[0];
+        iframeDoc.mouseup(function(){ setSelectedType(getSelectionElement(iframe), select);return true;});
+        iframeDoc.keyup(function(){ setSelectedType(getSelectionElement(iframe), select);return true;});
+        
+        return tb;
+    }
+        
+    function setSelectedType(node, select) {
+        while(node.parentNode) {
+            var nName = node.nodeName.toLowerCase();
+            for(var i=0;i<select.options.length;i++) {
+                if(nName==select.options[i].value){
+                    select.selectedIndex=i;
+                    return true;
+                }
+            }
+            node = node.parentNode;
+        }
+        select.selectedIndex=0;
+        return true;
+    }
+    
+    function getSelectionElement(iframe) {
+        if (iframe.contentWindow.document.selection) {
+            // IE selections
+            selection = iframe.contentWindow.document.selection;
+            range = selection.createRange();
+            try {
+                node = range.parentElement();
+            }
+            catch (e) {
+                return false;
+            }
+        } else {
+            // Mozilla selections
+            try {
+                selection = iframe.contentWindow.getSelection();
+                range = selection.getRangeAt(0);
+            }
+            catch(e){
+                return false;
+            }
+            node = range.commonAncestorContainer;
+        }
+        return node;
+    }
+}
+
+</script>
+
+<!-- END OF RTE   SCRIPT -->
+
+<!-- Pop up window code -->
+
+<script>
+/**
+*	akModal-  simplest alternative to thickbox
+*	author: Amit Kumar Singh 
+* 	project url : http://amiworks.co.in/talk/akmodal-simplest-alternative-to-thickbox/
+ * 	inspired from early versions of thickbox
+ *	
+**/
+/**
+  * Version 2.0.0
+  *  @param String  navurl             url to dispaly in the ifame
+  *  @param String  title      title of the pop up box
+  *  @param  Numeric  box_width	width of the box in pixels
+  *  @param  Numeric  box_height	height of the box in pixels
+  *   
+ **/
+
+jQuery.extend({
+	
+	showAkModal:function(navurl,title,box_width,box_height)
+	{
+	    var offset={};
+	    var options ={
+	    margin:1,
+	    border:1,
+	    padding:1,
+	    scroll:0
+	    };
+		
+	    var win_width =$(window).width();
+	    var scrollToLeft=$(window).scrollLeft();
+	    var win_height =$(window).height();
+	    var scrollToBottom=$(window).scrollTop();
+	   
+
+	    $('body').append("<div id='ak_modal_div' style='padding-top:0px;border:1px solid black;background-color:#FFF;position: absolute;z-index:1000;display:none;' ><div style='background-color:blue;color:white;display:block;padding-top:0px;margin-top:0px;font-family:georgia;'> <b>"+title+"</b></div><iframe width='"+box_width+"' height='"+box_height+"'  frameborder=0 marginwidth='0' marginheight='0' scrolling='NO'  name='frmTest' src='"+navurl+"'></iframe></div>");
+
+	    $('#ak_modal_div').css({left:(((win_width/2-box_width/2))+scrollToLeft)+'px',top:(((win_height/2-box_height/2))+scrollToBottom)+'px'});
+	  
+	    $('#close').click( function() {
+	       // 
+	       $('#ak_modal_div').fadeOut(500);
+	       $('#ak_modal_div').remove();
+	        $.dimScreenStop();
+	    });
+	    $.dimScreen(500, 0.7, function() {
+			$('#ak_modal_div').fadeIn(500);
+	    });
+	    
+		var offset = {}
+	    offset=$("#ak_modal_div").offset({ scroll: false })
+	
+  	    X_left=offset.left+box_width-16;
+	    X_top=offset.top;
+
+	    $('#close').css({left:X_left,top:X_top});
+
+	},
+	
+	akModalRemove:function()
+	{
+	   $('#ak_modal_div').fadeOut(500);
+	   $.dimScreenStop();
+	},
+	
+	akModalHideAndRedirect:function(redirect_url)
+	{
+	    $('#ak_modal_div').fadeOut(500);
+	    $.dimScreenStop();
+	    window.location=redirect_url;
+	}
+});	
+</script>
+
+<!-- End of Pop up Window Code -->
+
+
+
+<script>
+
+function onLoad() {
+	
+	onPageShow();
+}
+
+function onPageShow() {
+//calculate current time
+}	
+
+
+</script>
+
+
+ <script type="text/javascript">
+$(function(){
+				$('#demo > a:first').fancyzoom({Speed:400,showoverlay:false});
+				
+				$('img.fancyzoom').fancyzoom();
+			});
+		</script>
+		
+
+		
+	   	<style type="text/css">
+	   		A IMG {border:0;}
+	   		A{text-decoration:none;color:#000;}
+	   		body{background:#CCC;}
+	   		#pageWrapper{
+	   			margin:0 auto;
+	   			width:1000px;
+	   			border:1px solid #000;
+	   			background:#FFF;
+	   			padding: 0px 20px 40px 20px;	
+	   		}
+	   		h1{text-align:right;font-size:24px;}
+	   		h2{font-size:16px;border-bottom:1px solid #CCC;margin-top:40px;}
+	   		h3{font-size:14px;border-bottom:1px solid #CCC;margin-left:40px;}
+	   		#demo A {
+	   			display:block;
+	   			float:left;
+	   			width:400px;
+	   			text-align:left;
+	   			text-decoration:none;
+	   			color:#000;
+	   			font-size:11px;
+	   		}
+	   		#demo{
+	   			padding-left:200px;
+	   		}
+	   		#demo  ul {text-align:left;color:#000;}
+	   		p.code{
+	   			margin-left:60px;
+	   		}
+	   		pre{
+	   			margin-left:60px;
+	   			background:#CCC;
+	   			padding:6px;
+	   		}
+	   	</style>
+</head><body class="ContentCanvas" onload="onLoad()">
+<div id="ContentDiv1">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+		
+      <td valign="top" width="116"><img src="{% block stylesheet_myImage %}{% load adminmedia %}{% admin_media_prefix %}{{ profile_info.MY_IMAGE}}{% endblock %}" class="imgBdr" vspace="0" width="114" height="114" hspace="0"></td>
+      <td colspan="2" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="pgHeading" width="100%"><span class="flLft">Scraps</span><span class="flRgt"><a href="/successlogin/">Home  |   </a><a href="/logout/">Logout</a></span></td>
+        </tr>
+        <tr>
+          <td class="pgSubHeading1">
+				
+			<div id="message"><p>
+		</p></div>
+		<div id="profileDetails" style="">
+		<table><tbody><tr><td class=""></td></tr>
+		 <tr><td>
+		</td></tr></tbody></table>
+		  </div></td>
+        </tr>
+        <tr>
+          </tr><tr></tr>
+        
+      </tbody></table></td>
+    </tr>
+  </tbody></table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" height="400">
+    <tbody><tr>
+      <td class="" valign="top" width="120" height="100"><img src="" width="116" border="0" height="1">
+<table class="bdrLftLink" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td valign="top"><table width="250" border="0" cellpadding="0" cellspacing="1">
+            <tbody><td class="lftLinks"><img
+										src="{% block stylesheet_2 %}{% load adminmedia %}{% admin_media_prefix %}css/images/ico-Profile.gif{% endblock %}"
+										width="16" align="absmiddle" border="0" height="16"><a
+										href="/profile/{{ user_info.USER_ID }}">My Profile </a><a></a></td>
+			 
+          </tbody></table></td>
+        </tr>
+      </tbody></table></td>
+      <td class="clsProfileTxt" valign="top" width="59%" height="100">
+	  
+	<font size="3"><b>
+	<form action="/postscrap/" method="post">
+	<textarea cols="60" rows="7" name="scrapData"  class="rte-zone"></textarea><br><br>
+	<input type="hidden" value="{{ profile_info.USER_ID.USER_ID }}" name="owner_id"/>
+	<input type="submit" value="PostScrap"/>
+	</form>
+	<br><br>
+	
+	
+	</b></font><table>
+	<tbody><tr align="center"></tr>
+	</tbody></table>
+			 
+	  
+
+<table>
+<tbody>
+<div id="demo">
+
+		
+		
+		{% for data in scrapsCombo %}
+		<tr>
+		<td><img src="{% block image_friend %}{% load adminmedia %}{% admin_media_prefix %}{{ data.0.MY_IMAGE }}{% endblock %}" alt="{{ data.0.NAME }}" width="32" height="32" class="fancyzoom" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.1.SCRAP }}</td>
+          
+		
+		<td><tr></tr><tr><td>
+		<a href="/profile/{{ data.0.USER_ID.USER_ID }} " style="color: red;">{{ data.0.NAME}}</a>
+		
+		
+		</td>{% if activateDeleteButton %}
+			<td><input type="button" value="Delete" id="{{ data.1.SCRAP_ID}}" onclick="deleteScrap(this)"/></td>
+			{% ifnotequal data.1.SCRAPPER_ID.USER_ID data.1.USER_ID.USER_ID %}
+			<td><a href='/replyscrap/{{ data.0.USER_ID.USER_ID }}'  onclick="$.showAkModal(this.href,'Reply to {{ data.0.NAME}}',400,270);return false;"><font size='2' color='black' face='georgia'>Reply</font></a></td>
+			{% endifnotequal %}
+			{% else %}
+			{% ifequal data.1.SCRAPPER_ID.USER_ID user_info.USER_ID %}
+			<td><input type="button" value="Delete" id="{{ data.1.SCRAP_ID}}" onclick="deleteScrap(this)"/></td>
+			{% endifequal %}
+			
+			
+			{% endif %}
+			<script>
+			function deleteScrap(id){
+			var delUrl= '/deletescrap/'+ id.id
+			window.location.href=delUrl
+			}
+			
+			</script>
+		</tr></td>
+	
+		<td><hr></td>
+		</tr>
+	
+		{% endfor %}
+		
+		
+	</div></tbody></table>
+
+	</td>
+      <td rowspan="2" valign="top" width="30%" height="400"><table class="bdrLftLink" width="100%" bgcolor="#deeef3" border="0" cellpadding="0" cellspacing="0">
+        </table></td>
+    
+    </tr><tr>
+      
+          
+		<!-- Text Editor -->	
+	
+		
+ 
+ <!-- End of Text Editor -->
+    
+			
+		</table>
+	        </td></tr></tbody></table>
+      
+  
+
+</div>
+
+<script type="text/javascript">  
+    $('.rte-zone').rte();  
+ </script> 
+
+
+</body></html>

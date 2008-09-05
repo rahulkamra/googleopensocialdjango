@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Title -->
+<title>Google</title>
+<script type="text/javascript" src="{% block javascript_1 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/projvalidation.js"{% endblock %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/style/GoogleClasses.css{% endblock %}" />
+<!-- Tool tip -->
+
+<!--  Javascript includes -->
+<script type="text/javascript" src="{% block javascript_2 %}{% load adminmedia %}{% admin_media_prefix %}js/JS/jquery-1.2.6.js{% endblock %}"></script>
+<script type="text/javascript" src="{% block javascript %}{% load adminmedia %}{% admin_media_prefix %}js/JS/htmltooltip.js{% endblock %}"></script>
+
+
+<!--  Javascript includes -->
+
+<!-- Style Ajax Tool Tip-->
+<style type="text/css">
+
+div.htmltooltip{
+position: absolute; /*leave this and next 3 values alone*/
+z-index: 1000;
+left: -1000px;
+top: -1000px;
+background: #99ff33;
+border: 3px solid black;
+color: black;
+padding: 3px;
+width: 250px; /*width of tooltip*/
+}
+
+</style>
+
+<!-- Style tool tip end here -->
+
+<!-- Tool tip end here -->
+</head><body class="HPcanvas">
+	
+         <form name="myform" action="/registernewuser/" enctype="multipart/form-data" method="post" >
+         <div id="rgDiv1">
+	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td colspan="2" class="pgHeading">To join this community, Sign up below</td>
+        </tr>
+        <tr>
+          <td class="" width="19%">&nbsp;</td>
+          <td class="" valign="top" width="81%"><table class="lgBgColor" width="100%" border="0" cellpadding="0" cellspacing="4">
+
+            <tbody><tr>
+              <td class="clsNormalTxt" width="25%">User Name </td>
+              <td class="" width="75%"><input name="user_name" size="30" type="text">
+              <span style="color: red;font-size: 12px;padding-left: 10px" id="user_name_error">{% if userNameError %}Username should be alphanumeric and cannot be empty {% endif %}</span>
+              {% if alreadyPresent %}
+              <span style="color: red;font-size: 14px;padding-left: 10px" id="user_name_error_1">< UserName Already Exists </span>
+              {% endif %}
+            </td></tr>
+            <tr>
+              <td class="clsNormalTxt">Display Name </td>
+              <td class=""><input name="display_name" size="30" type="text">
+              <span style="color: red;font-size: 12px;padding-left: 10px" id="display_name_error">{% if displayNameError %}Displayname should be alphanumeric and cannot be empty {% endif %}</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="clsNormalTxt">Password</td>
+              <td class=""><input name="password" size="30" type="password">
+                <span style="color: red;font-size: 12px;padding-left: 10px" id="password_error">{% if passwordError %}Password cannot be empty{% endif %}</span>
+            </tr>
+            <tr>
+              <td class="clsNormalTxt">Confirm Password </td>
+              <td class=""><input name="repassword" size="30" type="password">
+              <span style="color: red;font-size: 12px;padding-left: 10px" id="password_error">{% if confirmPasswordError %}Password and Confirm Password should be same{% endif %}</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="clsNormalTxt">Gender</td>
+              <td class="clsNormalTxt"><input name="gender" value="male" type="radio">
+                Male
+                <input name="gender" value="female" type="radio">
+                Female
+                <span style="color: red;font-size: 12px;padding-left: 10px" id="gender_error">{% if genderError %}Please select a radio button {% endif %}</span>
+                </td>
+            </tr>
+            <tr>
+              <td class="clsNormalTxt">Date of Birth </td>
+              <td class=""><input name="dateofbirth1" size="2" maxlength="2" type="text" value="MM" onclick="this.value=''">
+                  <input name="dateofbirth2" size="2" maxlength="2" type="text" value="DD" onclick="this.value=''">
+                  <input name="dateofbirth3" size="4" maxlength="4" type="text" value="YYYY" onclick="this.value=''">
+                  <div class="htmltooltip">Date should be in MM/DD/YYYY</div>
+                 <a rel="htmltooltip" href="#">Tip</a>
+                  <span style="color: red;font-size: 12px;padding-left: 10px" id="date_of_birth_error">{% if dateOfBirthError %}Invalid Date{% endif %}</span>
+                  {% if invalidDate %}
+                  <span style="color: red;font-size: 14px;padding-left: 10px;" id="date_of_birth_error_1">Invalid Date</span>
+                  </td>
+                  {% endif %}
+            </tr>
+            <tr>
+              <td class="clsNormalTxt" valign="top">About Me </td>
+              <td class=""><textarea name="aboutme" rows="8" cols="60"></textarea></td>
+            </tr>
+            <tr>
+              <td class="clsNormalTxt" valign="top">Upload Photo (only jpegs) </td>
+              <td class="">
+                <input name="my_image" size="30" type="file">
+               <span style="color: red;font-size: 12px;padding-left: 10px" id="image_error">{% if imageError %}Invalid Image{% endif %}</span>
+              </td>
+
+            </tr>
+            <tr>
+              <td class="ht4" valign="top">&nbsp;</td>
+              <td class="ht4">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="clsNormalTxt" valign="top">&nbsp;</td>
+              <td class=""><input name="Submit" value="Done" class="btnTxt btnWidth60" type="submit">
+              <input name="reset" value="Home" class="btnTxt btnWidth60" onclick="window.open('/login/','_self')" ;="" type="reset"></td>
+            </tr>
+          </tbody></table></td>
+        </tr>
+        <tr>
+          <td class="">&nbsp;</td>
+          <td class="">&nbsp;</td>
+        </tr>
+      </tbody></table>
+	</div>
+</form>
+<script language="JavaScript" type="text/javascript">
+ var frmvalidator  = new Validator("myform");
+ frmvalidator.addValidation("user_name","req","Please enter username");
+ frmvalidator.addValidation("user_name","alnum","Please enteronly alphanumeric characters for username");
+ frmvalidator.addValidation("user_name","minlen=5","Username should be atleast five characters long ");
+ 
+ frmvalidator.addValidation("display_name","req","Please enter displayname");
+ frmvalidator.addValidation("display_name","alnum","Please enter only alphanumeric characters for displayname");
+ 
+ frmvalidator.addValidation("password","req","Please enter password");
+ frmvalidator.addValidation("password","minlen=5","Password should be atleast five characters long ");
+ 
+ frmvalidator.addValidation("repassword","req","Please enter ur password again");
+ frmvalidator.setAddnlValidationFunction("DoCustomValidation"); 
+ 
+ frmvalidator.addValidation("gender","selone_radio","Please select appropriate  radio button");
+
+ frmvalidator.addValidation("dateofbirth1","req","Invalid Date");
+ frmvalidator.addValidation("dateofbirth1","num","Invalid Date");
+ 
+ frmvalidator.addValidation("dateofbirth2","req","Invalid Date");
+ frmvalidator.addValidation("dateofbirth2","num","Invalid Date");
+ 
+ frmvalidator.addValidation("dateofbirth3","req","Invalid Date");
+ frmvalidator.addValidation("dateofbirth3","num","Invalid Date");
+ function DoCustomValidation()
+{
+  var frm = document.forms["myform"];
+  if(frm.password.value != frm.repassword.value)
+  {
+    alert('The Password and verified password do not match!');
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+  
+}
+
+
+ </script>
+</body></html>
